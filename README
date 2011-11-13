@@ -1,0 +1,74 @@
+weSprite
+========
+Manage Your CSS Sprite For Your Web Project
+
+
+Getting Started
+===============
+
+Install
+-------
+1. (Optional) Create a empty directory and move the script `weSprite.py` into it.
+    mkdir $NEWDIR
+    mv weSprite.py $NEWDIR
+    cd $NEWDIR
+    
+2. Make `weScript.py` executable
+    chmod u+x weSprite.py
+
+Usage Workflow
+--------------
+If you working on a web project, you might have created more than one css sprites.
+That process can be managed in weSprite
+
+1. You can create a new empty sprite.
+    ./weSprite -c <sprite-name>
+
+A sprite name should be a valid css class name
+
+2. See all available sprites
+    ./weSprite -s
+
+3. Add images to that sprite.
+    ./weSprite -u FooBar -a <path/to.file>
+
+Added files will only be commited if sprite is generated.
+
+4. Query for available images in the sprite.
+    ./weSprite -d <sprite-name>
+
+5. Remove uncommited images if desired.
+    ./weSprite -u <sprite-name> -p <file-name>
+
+6. Generate a sprite (image + css)
+    ./weSprite -g <sprite-name>
+
+Once a sprite is created the css/png files goes to `./pool/` directory and all
+added images to that particular sprite gets commited.
+
+7. Reset/Recreate the entire sprite database
+    ./weSprite -r
+
+Only work when `./data.pickle file` is been deleted for precautionary reasons.
+
+Manual
+======
+Usage: weSprite.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -s, --show-all        Show all sprites available
+  -q, --quiet           No verbose
+  -r, --reset           Reset the weSprite data structure
+  -c CREATE, --create=CREATE
+                        create a new sprite
+  -u USE, --use=USE     use sprite
+  -l LINK, --link=LINK  prefix link for the location of the image file
+  -a ADD, --add=ADD     add file to sprite
+  -d DETAILS, --details=DETAILS
+                        show details of a sprite
+  -t, --tree            show the entire sprites hierarchy
+  -g GENERATE, --generate=GENERATE
+                        generate image and css for the given sprite
+  -p PURGE, --purge=PURGE
+                        Purges file from a given Sprite
